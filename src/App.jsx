@@ -20,7 +20,9 @@ function App() {
       {path:'brand',element:<Brand/>},
       {path:'*', element:<NotFound/>}
     ]}
-  ])
+  ],
+  {basename:'/E-CommerceReact/'}
+)
 
 
   return (

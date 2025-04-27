@@ -14,8 +14,6 @@ function Login() {
         let response = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin',formsData)
         console.log(response.data);
         navigate('/')
-
-
        }catch(error){
         console.log(error.response?.data.message);
         
