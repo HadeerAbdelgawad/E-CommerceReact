@@ -1,0 +1,29 @@
+.animycontainer{
+    position: relative;
+}
+.deliver{
+    animation-name: deliverVideo;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@keyframes deliverVideo {
+    0% {
+        right: 80px;
+    }
+    25%{
+        right: 30px;
+    }
+    50%{
+        right: 500px;
+    }
+    100%{
+        
+        right: 1150px;
+    }
+}
