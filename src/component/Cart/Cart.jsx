@@ -3,12 +3,29 @@ import React, { useContext, useEffect, useState } from 'react'
 import { cartContext } from '../../Context/cartContext'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom'
+import { whishListContext } from '../../Context/whishListContext'
+import toast from 'react-hot-toast'
 
 function Carts() {
   let [cartProducts, setCartProducts] = useState(null)
   let { getProductToCart, deleteProductFromCart, updateProductCount } = useContext(cartContext)
   let [isloading, setLoading] = useState(true)
   let [cartId, setCartId]= useState(null)
+  const [favoriteItems, setFavoriteItems] = useState([]);
+  let {addProductToFav}= useContext(whishListContext)
+
+    async function addProductToWishList(id) {
+        try {
+          const response = await addProductToFav(id);
+          console.log(response);
+          toast.success('Added To Wishlist')
+          setFavoriteItems((prev) => [...prev, id]);
+
+        } catch (error) {
+          console.log(error);
+          toast.error('Something Went Wrong')
+        }
+    }
 
   async function getCartProducts() {
     try {
@@ -69,7 +86,7 @@ function Carts() {
                             <a href="#" className="col-span-1">
                               <img src={item.product.imageCover} alt={item.product.title} className='h-20 w-20' draggable="false" />
                             </a>
-                            <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 items-center">
+                            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 items-center">
                               <div className="col-span-2 gap-2">
                                 <button className="hover:cursor-pointer"
                                   onClick={() => {
@@ -77,15 +94,17 @@ function Carts() {
                                     if (newCount >= 1) {
                                       updateProducts(item.product.id, newCount);
                                     }
-                                }}><i className="fa-solid fa-minus"></i></button>
+                                   }}><i className="fa-solid fa-minus"></i>
+                                </button>
                                 <input type="number" min='1' value={item.count} readOnly className="text-center border border-gray-200 w-[50%] mx-1" />
                                 <button className="hover:cursor-pointer" onClick={() =>  {
                                   const newCount = item.count + 1;
                                   if (newCount >= 1) {
                                     updateProducts(item.product.id, newCount);
                                   }
-                              }
-                                }><i className="fa-solid fa-plus"></i></button>
+                                  }
+                                  }><i className="fa-solid fa-plus"></i>
+                                </button>
                               </div>
                               <div className="text-center col-span-1">
                                 <p className="text-base font-bold">{item.price}EGP</p>
@@ -96,7 +115,7 @@ function Carts() {
                               <p><span className='font-medium'>Category : </span>{item.product.category.name}</p>
                               {/* <p><span className='font-medium'>Brand : </span>{item.product.brand.name}</p> */}
                               <div className="flex items-center gap-4 mt-2">
-                                <button type="button" className="text-sm text-gray-500 hover:text-gray-900 hover:cursor-pointer">Add to Favorites</button>
+                                <button type="button" className="text-sm text-gray-500 hover:text-gray-900 hover:cursor-pointer" onClick={()=>{addProductToWishList(item.product.id)}}>Add to Favorites</button>
                                 <button type="button" className="text-sm text-red-600 hover:underline hover:cursor-pointer" 
                                 onClick={()=>{
                                   deleteProduct(item.product.id)
@@ -138,7 +157,7 @@ function Carts() {
 
                   <div className="flex items-center justify-center gap-2">
                     <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-                    <Link to={'/'} className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500 hover:text-black transition-all duration-300 ease">
+                    <Link to={'/'} className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500 hover:text-white transition-all duration-300 ease">
                       Continue Shopping
                       <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />

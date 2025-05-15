@@ -136,7 +136,7 @@ function Navbar() {
       {mobileMenuOpen && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pt-2 pb-3">
-            {['/', '/about', '/cart', '/brand'].map((path) => (
+            {['/', '/about', '/cart', '/brand' , '/allorders'].map((path) => (
               <Link
                 key={path}
                 to={path}

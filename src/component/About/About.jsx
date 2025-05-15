@@ -44,7 +44,7 @@ function About() {
         <h1 className='text-center text-3xl font-bold py-2'>Our Developer</h1>
         <div className='hover:cursor-pointer grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 mx-auto px-10'  >
             {/* Shared container for image + icons */}
-            <div className={`devCard ${styles.devCard} w-[400px] h-fit`}>
+            <div className={`devCard ${styles.devCard} w-[400px] h-fit mx-auto`}>
                 <img 
                     src={developer} 
                     alt="person1" 
