@@ -8,7 +8,6 @@ import Cart from './component/Cart/Cart'
 import Brand from './component/Brand/Brand'
 import NotFound from './component/NotFound/NotFound'
 import UserContextProvider from './Context/userContext'
-import Profile from './component/Profile/Profile'
 import ProtectedRoutes from './component/ProtectedRoutes/ProtectedRoutes'
 import ProductDetails from './component/ProductDetails/ProductDetails'
 import CartContextProvider from './Context/cartContext'
@@ -28,7 +27,6 @@ function App() {
       {index:true, element:<ProtectedRoutes><Products/></ProtectedRoutes>},
       {path:'cart',element:<ProtectedRoutes><Cart/></ProtectedRoutes>},
       {path:'brand',element:<ProtectedRoutes><Brand/></ProtectedRoutes>},
-      {path:'profile',element:<ProtectedRoutes><Profile/></ProtectedRoutes>},
       {path:'productDetails/:id',element:<ProtectedRoutes><ProductDetails/></ProtectedRoutes>},
       {path:'about',element:<ProtectedRoutes><About/></ProtectedRoutes>},
       {path:'checkout/:cardId',element:<ProtectedRoutes><Checkout/></ProtectedRoutes>},

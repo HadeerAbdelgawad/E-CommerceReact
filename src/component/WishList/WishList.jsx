@@ -20,7 +20,9 @@ function WishList() {
         console.log(productId);
         let {data}= await deleteProductFromFav(productId)
         console.log(data);
-        setFavProducts(data?.data.products)
+        // setFavProducts(data?.data.products)
+        setFavProducts((prev) => prev.filter(item => item.id !== productId));
+
         setFavoriteItems((prev) => [...prev, productId]);
 
     

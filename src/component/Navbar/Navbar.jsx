@@ -93,6 +93,15 @@ function Navbar() {
               >
                 About
               </Link>
+              <Link
+                to="/allorders"
+                onClick={() => handleLinkClick('/about')}
+                className={`${
+                  activeLink === '/about' ? 'bg-gray-900' : 'text-gray-300 hover:bg-gray-700'
+                } text-white px-3 py-2 rounded-md text-sm font-medium`}
+              >
+                All Orders
+              </Link>
             </div>
           </div>
 
@@ -111,7 +120,6 @@ function Navbar() {
 
               {profileMenuOpen && (
                 <div className="absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black/5">
-                  <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:cursor-pointer">Your Profile</Link>
                   <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:cursor-pointer">Sign in</Link>
                   <Link to="/register" className="block px-4 py-2 text-sm text-gray-700 hover:cursor-pointer">Sign up</Link>
                   <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:cursor-pointer" onClick={()=>{handlelogOut()}}>LogOut</button>
