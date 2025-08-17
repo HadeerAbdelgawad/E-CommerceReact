@@ -4,7 +4,7 @@ import {jwtDecode} from 'jwt-decode'
 import Loader from '../Loader/Loader'
 import { Link } from 'react-router-dom'
 import truck from '../../assets/truck.mp4'
-import styles from './Allorders.module.css'
+import styles from './AllOrders.module.css'
 
 
 function Allorders() {
